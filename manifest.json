@@ -1,0 +1,24 @@
+{
+  "name": "webrtc extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "short_name": "Test Ext",
+  "description": "It's a test chrome extension",
+  "browser_action": {
+    "default_title": "Test extension"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["webrtc.js", "content.js"],
+      "all_frames": true,
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "scripts": ["webrtc.js", "background.js"],
+    "persistent": false
+  },
+  "permissions": ["desktopCapture", "tabs", "<all_urls>", "tabCapture", "activeTab"],
+  "content_security_policy": "script-src 'self' blob: filesystem: 'sha256-sc49/L0G8NqUd0E5JZ4dtPKUSZP5HTf9OhsjiK9AiE4='; object-src 'self'"
+}
